@@ -26,11 +26,8 @@ This project is a web application for classifying SMS or email messages as spam 
    ```bash
    pip install streamlit scikit-learn nltk pandas
    ```
-
-3. **Download the Dataset**:
-   Download the dataset (This dataset is taken from Kaggle) and place the data files in the project directory. Ensure the file paths in the scripts match the locations of your data files.
-
-4. **Run the Application**:
+   
+3. **Run the Application**:
    Start the Streamlit web application by running:
    ```bash
    streamlit run app.py
