@@ -4,7 +4,6 @@ import string
 from nltk.corpus import stopwords
 import nltk
 from nltk.stem.porter import PorterStemmer
-import base64
 
 # Download necessary NLTK resources
 nltk.download('punkt')
@@ -27,14 +26,6 @@ def transform_text(text):
     filtered_words = [i for i in filtered_words if i not in stop_words and i not in string.punctuation]
     stemmed_words = [ps.stem(i) for i in filtered_words]
     return " ".join(stemmed_words)
-
-
-# Function to convert local image to base64
-def get_base64(bin_file):
-    with open(bin_file, 'rb') as f:
-        data = f.read()
-    return base64.b64encode(data).decode()
-
 
 # Streamlit application
 st.title("Email/SMS Spam Classifier")
