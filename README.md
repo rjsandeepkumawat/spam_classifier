@@ -1,53 +1,58 @@
-# README: Iris Flower Classification
 
-## Author: Sandeep Kumawat
+# SMS/Email Spam Classifier
 
-## Batch: April 2024 (A48)
+This project is a web application for classifying SMS or email messages as spam or not spam. The application is built using Streamlit for the frontend, and it utilizes machine learning techniques to perform the classification. The Naive Bayes algorithm, specifically the Multinomial Naive Bayes variant, is employed for this task. The project also involves Natural Language Processing (NLP) tasks using NLTK to preprocess and prepare the data.
 
-## Domain: Data Science
+## Project Components
 
-## Objective
+1. **`app.py`**: The main Streamlit application script. This file contains the code for the web interface and handles user input and display of classification results.
 
-The primary goal of this project is to develop a model capable of classifying iris flowers into distinct species based on their sepal and petal measurements.
+2. **`model.py`**: This script is responsible for training the Naive Bayes model using the provided dataset. It saves the trained model for use in the web application.
 
-## Libraries Utilized
+3. **`vectorizer.py`**: This script contains the code for text vectorization. It prepares the text data for the model by converting it into a numerical format that the machine learning algorithm can process.
 
-The project employed several key libraries:
+4. **Data Files**: The dataset used for training and evaluation is sourced from Kaggle. The data files should be placed in the project directory.
 
-- numpy
-- pandas
-- sklearn.cluster.KMeans
-- matplotlib.pyplot
-- seaborn
+## Setup
 
-## Dataset
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/rjsandeepkumawat/spam_classifier.git
+   cd spam_classifier
+   ```
 
-The iris dataset, encompassing details about iris flowers such as sepal length, sepal width, petal length, petal width, and species, was loaded utilizing seaborn's `load_dataset` function.
+2. **Install Dependencies**:
+   Ensure you have Python 3.x installed. Install the required libraries using pip:
+   ```bash
+   pip install streamlit scikit-learn nltk pandas
+   ```
 
-## Data Exploration and Preprocessing
+3. **Download the Dataset**:
+   Download the dataset (This dataset is taken from Kaggle) and place the data files in the project directory. Ensure the file paths in the scripts match the locations of your data files.
 
-1. The dataset was loaded into a DataFrame using seaborn's `load_dataset` function, and the initial 5 rows were displayed via `df.head()`.
-2. The 'species' column in the DataFrame was converted into numerical values using `pd.factorize(df['species'])`.
-3. Descriptive statistics for the dataset were presented using `df.describe()`.
-4. Missing values in the dataset were inspected using `df.isna().sum()`.
+4. **Run the Application**:
+   Start the Streamlit web application by running:
+   ```bash
+   streamlit run app.py
+   ```
 
-## Data Visualization
+## Usage
 
-1. 3D scatter plots were generated to visualize the relationships among species, petal length, and petal width, as well as among species, sepal length, and sepal width, using `matplotlib.pyplot` and `mpl_toolkits.mplot3d.Axes3D`.
-2. 2D scatter plots were crafted to depict the relationships between species and sepal length, as well as between species and sepal width, utilizing `seaborn.scatterplot`.
+- Open your browser and navigate to the local server address provided by Streamlit (usually `http://localhost:8501`).
+- Enter the SMS or email message you want to classify into the text input box.
+- Click the "Predict" button to see if the message is classified as "SPAM" or "NOT SPAM".
 
-## Application of Elbow Technique for K-Means Clustering
+## Model Details
 
-1. The Elbow Technique was employed to ascertain the optimal number of clusters (K) based on the sum of squared errors (SSE).
-2. The KMeans algorithm was initialized with varying values of K (ranging from 1 to 10), and SSE was computed for each K value.
-3. A plot of K values against SSE was generated using `matplotlib.pyplot` to identify the "elbow point," indicative of the optimal number of clusters.
+- **Algorithm**: Multinomial Naive Bayes
+- **Library**: scikit-learn
+- **NLP Tasks**: Tokenization, stopword removal, stemming (using NLTK)
 
-## Application of K-Means Algorithm
+## Notes
 
-1. The KMeans algorithm was applied to the dataset with the optimal number of clusters (K=3) determined from the Elbow Technique.
-2. Cluster labels were predicted for each data point in the dataset using `km.fit_predict(df[['petal_length','petal_width']])`.
+- Ensure that the NLTK resources (`punkt` and `stopwords`) are downloaded before running the application.
+- The data used is publicly available on Kaggle and should be appropriately licensed for use.
 
-## Accuracy Assessment
+## Contributing
 
-1. The confusion matrix was computed to assess the accuracy of the KMeans clustering.
-2. The confusion matrix was visualized using `matplotlib.pyplot.imshow` and `plt.text` to display the true and predicted labels.
+If you wish to contribute to this project, please fork the repository and submit a pull request with your changes.
